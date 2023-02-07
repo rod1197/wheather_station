@@ -1,0 +1,9 @@
+Clouds
+2°C
+Min Temp: 1°C
+Max Temp: 2°C
+Pressure: 1013
+Humidity: 93
+Wind Speed: 4.12
+Sunrise: 06:41:21
+Sunset: 04:49:32

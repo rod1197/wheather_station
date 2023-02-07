@@ -33,18 +33,18 @@ def getWeather(): # function to get weather
         label3.config(text = "") # clear label3
 
         # saving data to a file 
-        with open('D:\AGH\python\weather_data.txt', 'w') as f: 
+        with open('D:\AGH\python\wheather_station\weather_data.txt', 'w') as f: 
             f.write(final_info) 
             f.write(final_data)
         
         # saving data to a file in csv format
-        with open('D:\AGH\python\weather_data.csv', 'w') as f:
+        with open('D:\AGH\python\wheather_station\weather_data.csv', 'w') as f:
             f.write('Weather, Temperature, Min Temp, Max Temp, Pressure, Humidity, Wind Speed, Sunrise, Sunset\n')
             f.write(final_info)
             f.write(final_data)
         
         # saving data in xml file but new row 
-        with open('D:\AGH\python\weather_data.xml', 'w') as f:
+        with open('D:\AGH\python\wheather_station\weather_data.xml', 'w') as f:
             f.write('<xml version="1.0" encoding="UTF-8">') 
             f.write('')
             f.write('<weather>')
@@ -73,7 +73,7 @@ def getWeather(): # function to get weather
 
 
         #show all searched cities in a list 
-        with open('D:\AGH\python\weather_data.html', 'w') as f:
+        with open('D:\AGH\python\wheather_station/weather_data.html', 'w') as f:
             f.write('<html>')
             f.write('')
             f.write('<table>')
@@ -128,7 +128,9 @@ def getWeather(): # function to get weather
             f.write('')
             f.write('</html>')
 
-            
+        # sendig data via whatsapp
+        #kit.sendwhatmsg('+52 5513758888', final_info + final_data, 23, 6)
+
     except KeyError:
         # if city name is wrong, then show a warning
 
