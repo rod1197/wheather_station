@@ -6,35 +6,35 @@ import pywhatkit as kit
 global final_info
 global final_data
 
-# get weather
+# get weather 
 def getWeather(): # function to get weather
     global final_info 
     global final_data
     # if key error occurs, then the city name is wrong
     try:
-        city = textField.get()
-        api = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=06c921750b9a82d8f5d1294e1586276f"
+        city = textField.get() # get city name from text field
+        api = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=06c921750b9a82d8f5d1294e1586276f" # api link
         
-        json_data = requests.get(api).json()
-        condition = json_data['weather'][0]['main']
-        temp = int(json_data['main']['temp'] - 273.15)
-        min_temp = int(json_data['main']['temp_min'] - 273.15)
-        max_temp = int(json_data['main']['temp_max'] - 273.15)
-        pressure = json_data['main']['pressure']
-        humidity = json_data['main']['humidity']
-        wind = json_data['wind']['speed']
-        sunrise = time.strftime('%I:%M:%S', time.gmtime(json_data['sys']['sunrise'] - 21600))
-        sunset = time.strftime('%I:%M:%S', time.gmtime(json_data['sys']['sunset'] - 21600))
+        json_data = requests.get(api).json() # get data in json format
+        condition = json_data['weather'][0]['main'] # main weather condition
+        temp = int(json_data['main']['temp'] - 273.15) # temperature in celsius
+        min_temp = int(json_data['main']['temp_min'] - 273.15) # minimum temperature in celsius
+        max_temp = int(json_data['main']['temp_max'] - 273.15) # maximum temperature in celsius
+        pressure = json_data['main']['pressure'] # pressure
+        humidity = json_data['main']['humidity']   # humidity
+        wind = json_data['wind']['speed'] # wind speed
+        sunrise = time.strftime('%I:%M:%S', time.gmtime(json_data['sys']['sunrise'] - 21600)) # sunrise time
+        sunset = time.strftime('%I:%M:%S', time.gmtime(json_data['sys']['sunset'] - 21600)) # sunset time
 
-        final_info = condition + "\n" + str(temp) + "°C" 
+        final_info = condition + "\n" + str(temp) + "°C" # final info
         final_data = "\n"+ "Min Temp: " + str(min_temp) + "°C" + "\n" + "Max Temp: " + str(max_temp) + "°C" +"\n" + "Pressure: " + str(pressure) + "\n" +"Humidity: " + str(humidity) + "\n" +"Wind Speed: " + str(wind) + "\n" + "Sunrise: " + sunrise + "\n" + "Sunset: " + sunset
-        label1.config(text = final_info)
-        label2.config(text = final_data)
-        label3.config(text = "")
+        label1.config(text = final_info) # show final info
+        label2.config(text = final_data) # show final data
+        label3.config(text = "") # clear label3
 
         # saving data to a file 
-        with open('D:\AGH\python\weather_data.txt', 'w') as f:
-            f.write(final_info)
+        with open('D:\AGH\python\weather_data.txt', 'w') as f: 
+            f.write(final_info) 
             f.write(final_data)
         
         # saving data to a file in csv format
@@ -45,7 +45,7 @@ def getWeather(): # function to get weather
         
         # saving data in xml file but new row 
         with open('D:\AGH\python\weather_data.xml', 'w') as f:
-            f.write('<xml version="1.0" encoding="UTF-8">')
+            f.write('<xml version="1.0" encoding="UTF-8">') 
             f.write('')
             f.write('<weather>')
             f.write('')
@@ -132,9 +132,9 @@ def getWeather(): # function to get weather
     except KeyError:
         # if city name is wrong, then show a warning
 
-        label1.config(text = "")
-        label2.config(text = "")
-        label3.config(text = "Wrong City Name")
+        label1.config(text = "") # clear label1
+        label2.config(text = "") # clear label2
+        label3.config(text = "Wrong City Name") # show label3
 
 
 
